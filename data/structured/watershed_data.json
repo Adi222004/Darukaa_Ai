@@ -1,0 +1,22 @@
+{
+  "name": "Sample Watershed",
+  "lat": 26.5,
+  "lon": 80.5,
+  "region": "subtropical",
+  "riparian_soil_ph": 7.4,
+  "riparian_soc_pct": 1.69,
+  "clay_pct": 26.6,
+  "moisture": "medium",
+  "rainfall_mm": 862.8,
+  "temp_c": 25.8,
+  "water_ph": 7.14,
+  "turbidity_ntu": 16.9,
+  "dissolved_oxygen_mgl": 9.3,
+  "upstream_land_use": "agricultural",
+  "deforestation_rate": "medium",
+  "pollution_level": "high",
+  "aquatic_species_richness": 8,
+  "riparian_buffer_width_m": 5.0,
+  "habitat_diversity": "low",
+  "fetched_at": "2026-09-17T17:19:41.029890"
+}

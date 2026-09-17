@@ -8,9 +8,11 @@ __pycache__/
 *.pyc
 *.pyo
 
-# NOTE: data/ folders are intentionally NOT ignored here,
-# so that Render and Streamlit Cloud can serve pre-built
-# vectorstore + database without rebuilding at deploy time.
+# Vector database (regenerated at deploy time via rag/ingest.py)
+data/vectorstore/
+
+# Large PDFs (downloaded from source URLs listed in README)
+data/documents/*.pdf
 
 # OS files
 .DS_Store
