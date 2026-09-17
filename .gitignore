@@ -1,0 +1,30 @@
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Vector database (regenerate with `python rag/ingest.py`)
+data/vectorstore/
+
+# Large PDFs (download from source URLs listed in README)
+data/documents/*.pdf
+
+# SQLite database and JSON (regenerate with fetch + seed)
+data/structured/*.db
+data/structured/*.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Env vars
+.env
