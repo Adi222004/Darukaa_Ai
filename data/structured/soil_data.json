@@ -1,0 +1,59 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      80.5,
+      26.5
+    ]
+  },
+  "properties": {
+    "layers": [
+      {
+        "name": "phh2o",
+        "unit_measure": {
+          "d_factor": 10,
+          "mapped_units": "pH*10",
+          "target_units": "-",
+          "uncertainty_unit": ""
+        },
+        "depths": [
+          {
+            "range": {
+              "top_depth": 0,
+              "bottom_depth": 5,
+              "unit_depth": "cm"
+            },
+            "label": "0-5cm",
+            "values": {
+              "mean": 74
+            }
+          }
+        ]
+      },
+      {
+        "name": "soc",
+        "unit_measure": {
+          "d_factor": 10,
+          "mapped_units": "dg/kg",
+          "target_units": "g/kg",
+          "uncertainty_unit": ""
+        },
+        "depths": [
+          {
+            "range": {
+              "top_depth": 0,
+              "bottom_depth": 5,
+              "unit_depth": "cm"
+            },
+            "label": "0-5cm",
+            "values": {
+              "mean": 169
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "query_time_s": 0.9819025993347168
+}

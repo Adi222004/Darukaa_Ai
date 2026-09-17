@@ -8,15 +8,9 @@ __pycache__/
 *.pyc
 *.pyo
 
-# Vector database (regenerate with `python rag/ingest.py`)
-data/vectorstore/
-
-# Large PDFs (download from source URLs listed in README)
-data/documents/*.pdf
-
-# SQLite database and JSON (regenerate with fetch + seed)
-data/structured/*.db
-data/structured/*.json
+# NOTE: data/ folders are intentionally NOT ignored here,
+# so that Render and Streamlit Cloud can serve pre-built
+# vectorstore + database without rebuilding at deploy time.
 
 # OS files
 .DS_Store
