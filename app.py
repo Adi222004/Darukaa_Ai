@@ -1,5 +1,10 @@
+import os
 import streamlit as st
 import requests
+
+# Backend URL: reads from Streamlit secrets in the cloud,
+# falls back to localhost for local development
+BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000/chat")
 
 st.set_page_config(page_title="Darukaa Watershed AI", layout="wide")
 st.title("💧 Darukaa.Earth Watershed Restoration Intelligence")
@@ -35,12 +40,15 @@ with st.sidebar:
             "riparian_buffer_width_m": buffer_width,
             "rainfall_mm": rainfall
         }
-        response = requests.post("http://localhost:8000/chat", json={
-            "user_id": st.session_state.user_id,
-            "message": "Here is my watershed data.",
-            "structured_data": structured
-        })
-        st.session_state.messages.append({"role": "assistant", "content": response.json()["response"]})
+        try:
+            response = requests.post(BACKEND_URL, json={
+                "user_id": st.session_state.user_id,
+                "message": "Here is my watershed data.",
+                "structured_data": structured
+            }, timeout=60)
+            st.session_state.messages.append({"role": "assistant", "content": response.json()["response"]})
+        except Exception as e:
+            st.session_state.messages.append({"role": "assistant", "content": f"⚠️ Backend error: {e}. If deployed on free tier, wait 30-60s and try again."})
 
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
@@ -51,11 +59,14 @@ if prompt := st.chat_input("Describe your watershed..."):
     with st.chat_message("user"):
         st.write(prompt)
 
-    response = requests.post("http://localhost:8000/chat", json={
-        "user_id": st.session_state.user_id,
-        "message": prompt
-    })
-    answer = response.json()["response"]
+    try:
+        response = requests.post(BACKEND_URL, json={
+            "user_id": st.session_state.user_id,
+            "message": prompt
+        }, timeout=60)
+        answer = response.json()["response"]
+    except Exception as e:
+        answer = f"⚠️ Backend error: {e}. If deployed on free tier, wait 30-60s and try again."
     st.session_state.messages.append({"role": "assistant", "content": answer})
     with st.chat_message("assistant"):
         st.write(answer)
